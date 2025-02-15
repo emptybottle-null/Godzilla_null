@@ -9,7 +9,7 @@ https://www.decompiler.com/
 
 下载后得到反编译后的压缩包
 
-![反编译后的压缩包](G:\Code\git\Godzilla_null\README.assets\反编译后的压缩包.jpg)
+![反编译后的压缩包](.\README.assets\反编译后的压缩包.jpg)
 
 接下来在idea生成一个新项目
 
