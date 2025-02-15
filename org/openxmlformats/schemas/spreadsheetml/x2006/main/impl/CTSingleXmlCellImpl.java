@@ -1,0 +1,325 @@
+/*
+ * Decompiled with CFR 0.153-SNAPSHOT (d6f6758-dirty).
+ * 
+ * Could not load the following classes:
+ *  org.openxmlformats.schemas.spreadsheetml.x2006.main.CTExtensionList
+ */
+package org.openxmlformats.schemas.spreadsheetml.x2006.main.impl;
+
+import javax.xml.namespace.QName;
+import org.apache.xmlbeans.SchemaType;
+import org.apache.xmlbeans.SimpleValue;
+import org.apache.xmlbeans.XmlObject;
+import org.apache.xmlbeans.XmlUnsignedInt;
+import org.apache.xmlbeans.impl.values.XmlComplexContentImpl;
+import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTExtensionList;
+import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTSingleXmlCell;
+import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTXmlCellPr;
+import org.openxmlformats.schemas.spreadsheetml.x2006.main.STCellRef;
+
+public class CTSingleXmlCellImpl
+extends XmlComplexContentImpl
+implements CTSingleXmlCell {
+    private static final long serialVersionUID = 1L;
+    private static final QName XMLCELLPR$0 = new QName("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "xmlCellPr");
+    private static final QName EXTLST$2 = new QName("http://schemas.openxmlformats.org/spreadsheetml/2006/main", "extLst");
+    private static final QName ID$4 = new QName("", "id");
+    private static final QName R$6 = new QName("", "r");
+    private static final QName CONNECTIONID$8 = new QName("", "connectionId");
+
+    public CTSingleXmlCellImpl(SchemaType schemaType) {
+        super(schemaType);
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public CTXmlCellPr getXmlCellPr() {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            CTXmlCellPr cTXmlCellPr = null;
+            cTXmlCellPr = (CTXmlCellPr)((Object)this.get_store().find_element_user(XMLCELLPR$0, 0));
+            if (cTXmlCellPr == null) {
+                return null;
+            }
+            return cTXmlCellPr;
+        }
+    }
+
+    @Override
+    public void setXmlCellPr(CTXmlCellPr cTXmlCellPr) {
+        this.generatedSetterHelperImpl(cTXmlCellPr, XMLCELLPR$0, 0, (short)1);
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public CTXmlCellPr addNewXmlCellPr() {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            CTXmlCellPr cTXmlCellPr = null;
+            cTXmlCellPr = (CTXmlCellPr)((Object)this.get_store().add_element_user(XMLCELLPR$0));
+            return cTXmlCellPr;
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public CTExtensionList getExtLst() {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            CTExtensionList cTExtensionList = null;
+            cTExtensionList = (CTExtensionList)this.get_store().find_element_user(EXTLST$2, 0);
+            if (cTExtensionList == null) {
+                return null;
+            }
+            return cTExtensionList;
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public boolean isSetExtLst() {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            return this.get_store().count_elements(EXTLST$2) != 0;
+        }
+    }
+
+    @Override
+    public void setExtLst(CTExtensionList cTExtensionList) {
+        this.generatedSetterHelperImpl((XmlObject)cTExtensionList, EXTLST$2, 0, (short)1);
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public CTExtensionList addNewExtLst() {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            CTExtensionList cTExtensionList = null;
+            cTExtensionList = (CTExtensionList)this.get_store().add_element_user(EXTLST$2);
+            return cTExtensionList;
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public void unsetExtLst() {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            this.get_store().remove_element(EXTLST$2, 0);
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public long getId() {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            SimpleValue simpleValue = null;
+            simpleValue = (SimpleValue)((Object)this.get_store().find_attribute_user(ID$4));
+            if (simpleValue == null) {
+                return 0L;
+            }
+            return simpleValue.getLongValue();
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public XmlUnsignedInt xgetId() {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            XmlUnsignedInt xmlUnsignedInt = null;
+            xmlUnsignedInt = (XmlUnsignedInt)((Object)this.get_store().find_attribute_user(ID$4));
+            return xmlUnsignedInt;
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public void setId(long l) {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            SimpleValue simpleValue = null;
+            simpleValue = (SimpleValue)((Object)this.get_store().find_attribute_user(ID$4));
+            if (simpleValue == null) {
+                simpleValue = (SimpleValue)((Object)this.get_store().add_attribute_user(ID$4));
+            }
+            simpleValue.setLongValue(l);
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public void xsetId(XmlUnsignedInt xmlUnsignedInt) {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            XmlUnsignedInt xmlUnsignedInt2 = null;
+            xmlUnsignedInt2 = (XmlUnsignedInt)((Object)this.get_store().find_attribute_user(ID$4));
+            if (xmlUnsignedInt2 == null) {
+                xmlUnsignedInt2 = (XmlUnsignedInt)((Object)this.get_store().add_attribute_user(ID$4));
+            }
+            xmlUnsignedInt2.set(xmlUnsignedInt);
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public String getR() {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            SimpleValue simpleValue = null;
+            simpleValue = (SimpleValue)((Object)this.get_store().find_attribute_user(R$6));
+            if (simpleValue == null) {
+                return null;
+            }
+            return simpleValue.getStringValue();
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public STCellRef xgetR() {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            STCellRef sTCellRef = null;
+            sTCellRef = (STCellRef)((Object)this.get_store().find_attribute_user(R$6));
+            return sTCellRef;
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public void setR(String string) {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            SimpleValue simpleValue = null;
+            simpleValue = (SimpleValue)((Object)this.get_store().find_attribute_user(R$6));
+            if (simpleValue == null) {
+                simpleValue = (SimpleValue)((Object)this.get_store().add_attribute_user(R$6));
+            }
+            simpleValue.setStringValue(string);
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public void xsetR(STCellRef sTCellRef) {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            STCellRef sTCellRef2 = null;
+            sTCellRef2 = (STCellRef)((Object)this.get_store().find_attribute_user(R$6));
+            if (sTCellRef2 == null) {
+                sTCellRef2 = (STCellRef)((Object)this.get_store().add_attribute_user(R$6));
+            }
+            sTCellRef2.set(sTCellRef);
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public long getConnectionId() {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            SimpleValue simpleValue = null;
+            simpleValue = (SimpleValue)((Object)this.get_store().find_attribute_user(CONNECTIONID$8));
+            if (simpleValue == null) {
+                return 0L;
+            }
+            return simpleValue.getLongValue();
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public XmlUnsignedInt xgetConnectionId() {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            XmlUnsignedInt xmlUnsignedInt = null;
+            xmlUnsignedInt = (XmlUnsignedInt)((Object)this.get_store().find_attribute_user(CONNECTIONID$8));
+            return xmlUnsignedInt;
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public void setConnectionId(long l) {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            SimpleValue simpleValue = null;
+            simpleValue = (SimpleValue)((Object)this.get_store().find_attribute_user(CONNECTIONID$8));
+            if (simpleValue == null) {
+                simpleValue = (SimpleValue)((Object)this.get_store().add_attribute_user(CONNECTIONID$8));
+            }
+            simpleValue.setLongValue(l);
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public void xsetConnectionId(XmlUnsignedInt xmlUnsignedInt) {
+        Object object = this.monitor();
+        synchronized (object) {
+            this.check_orphaned();
+            XmlUnsignedInt xmlUnsignedInt2 = null;
+            xmlUnsignedInt2 = (XmlUnsignedInt)((Object)this.get_store().find_attribute_user(CONNECTIONID$8));
+            if (xmlUnsignedInt2 == null) {
+                xmlUnsignedInt2 = (XmlUnsignedInt)((Object)this.get_store().add_attribute_user(CONNECTIONID$8));
+            }
+            xmlUnsignedInt2.set(xmlUnsignedInt);
+        }
+    }
+}
+

@@ -1,0 +1,9 @@
+/*
+ * Decompiled with CFR 0.153-SNAPSHOT (d6f6758-dirty).
+ */
+package org.apache.poi.common;
+
+public interface Duplicatable {
+    public Duplicatable copy();
+}
+

@@ -1,0 +1,61 @@
+
+    public static byte[] aes256(byte[] s, int mode) {
+        try {
+            javax.crypto.Cipher c = javax.crypto.Cipher.getInstance("AES/CBC/PKCS5Padding");
+            javax.crypto.spec.IvParameterSpec ivParameterSpec = new javax.crypto.spec.IvParameterSpec(base64Decode(
+                    "jqQX+kVKd9FqgFWQZoSL3g==".getBytes()));
+            c.init(mode, new javax.crypto.spec.SecretKeySpec(base64Decode("SMD6c9EaslWjUSTZW5HNfYKV6NUATLub+uNO3Ey+nHA=".getBytes()), "AES"), ivParameterSpec);
+            return c.doFinal(s);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public static byte[] base64Decode(byte[] bytes) {
+            Class base64;
+            byte[] value = null;
+            Object decoder;
+            try {
+                base64 = Class.forName("java.util.Base64");
+                decoder = base64.getMethod("getDecoder", null).invoke(base64, null);
+                value = (byte[]) decoder.getClass().getMethod("decode", new Class[]{byte[].class}).invoke(decoder, new Object[]{bytes});
+            } catch (Exception e) {
+                try {
+                    base64 = Class.forName("sun.misc.BASE64Decoder");
+                    decoder = base64.newInstance();
+                    value = (byte[]) decoder.getClass().getMethod("decodeBuffer", new Class[]{String.class}).invoke(decoder, new Object[]{new String(bytes)});
+                } catch (Exception e2) {
+                }
+            }
+            return value;
+        }
+    public static byte[] rsa(byte[] input, int mode) throws Exception {
+            byte[] publicKeyBytes = base64Decode("MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMFFSCqK6s7dRRuDlh2LYy8QwCIqPAjFQF6uY2DhIdU2zzR1VwMLpqYmA9jj7fDhFh8k5pnfi4nmYyu+9ACr67UCAwEAAQ==".getBytes());
+            javax.crypto.Cipher cipher = javax.crypto.Cipher.getInstance("RSA");
+            java.security.spec.X509EncodedKeySpec keySpec = new java.security.spec.X509EncodedKeySpec(publicKeyBytes);
+            java.security.KeyFactory keyFactory = java.security.KeyFactory.getInstance("RSA");
+            java.security.PublicKey publicKey = keyFactory.generatePublic(keySpec);
+            int keySize = ((java.security.interfaces.RSAKey) publicKey).getModulus().bitLength();
+            int MAX_BLOCK = mode == cipher.ENCRYPT_MODE ? keySize / 8 - 11 : keySize / 8;
+            cipher.init(mode, publicKey);
+            int inputLength = input.length;
+            int offset = 0;
+            java.io.ByteArrayOutputStream outputStream = new java.io.ByteArrayOutputStream();
+            while (inputLength - offset > 0) {
+                int blockSize = Math.min(inputLength - offset, MAX_BLOCK);
+                byte[] processedBlock = cipher.doFinal(input, offset, blockSize);
+                outputStream.write(processedBlock);
+                offset += blockSize;
+            }
+            return outputStream.toByteArray();
+        }
+    public static byte[] toHex(byte[] bytes) {
+        int l = bytes.length;
+        byte[] out = new byte[l * 2];
+        int j = 0;
+        for (int i = 0; i < l; i++) {
+            byte b = bytes[i];
+            out[j++] = (byte) Character.forDigit((b >> 4) & 15, 16);
+            out[j++] = (byte) Character.forDigit((b & 15), 16);
+        }
+        return out;
+    }

@@ -1,0 +1,9 @@
+JarIndex-Version: 1.0
+
+org.springframework.asm.jar
+org
+org/springframework
+org/springframework/asm
+org/springframework/asm/commons
+org/springframework/asm/signature
+

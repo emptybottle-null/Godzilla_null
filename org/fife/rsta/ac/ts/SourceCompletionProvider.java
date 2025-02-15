@@ -1,0 +1,11 @@
+/*
+ * Decompiled with CFR 0.153-SNAPSHOT (d6f6758-dirty).
+ */
+package org.fife.rsta.ac.ts;
+
+import org.fife.ui.autocomplete.DefaultCompletionProvider;
+
+public class SourceCompletionProvider
+extends DefaultCompletionProvider {
+}
+

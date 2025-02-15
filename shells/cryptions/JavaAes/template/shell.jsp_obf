@@ -1,0 +1,6 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="1.2"><jsp:declaration>
+{globalCode}
+</jsp:declaration>
+<jsp:scriptlet>
+{code}
+</jsp:scriptlet><jsp:text></jsp:text></jsp:root>
