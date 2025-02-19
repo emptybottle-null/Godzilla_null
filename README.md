@@ -75,7 +75,7 @@ https://www.decompiler.com/
 
 
 
-![运行结果](./README.assets/运行结果.png)
+![运行结果](./README.assets/运行结果.jpg)
 
 
 
