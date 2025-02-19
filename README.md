@@ -3,7 +3,7 @@
 
 # 一、环境
 
-对冰蝎的jar包进行反编译
+对哥斯拉的jar包进行反编译
 
 https://www.decompiler.com/
 
@@ -15,7 +15,7 @@ https://www.decompiler.com/
 
 ![image-20250207094203590](./README.assets/image-20250207094203590.png)
 
-生成项目后我们来到项目目录下把前面反编译的压缩包解压到项目目录下  同时新建一个lib文件夹把冰蝎原项目放入lib中  
+生成项目后我们来到项目目录下把前面反编译的压缩包解压到项目目录下  同时新建一个lib文件夹把哥斯拉原项目放入lib中  
 
 ![新建lib文件夹](./README.assets/新建lib文件夹.jpg)
 
